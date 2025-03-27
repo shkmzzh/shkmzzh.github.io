@@ -1,0 +1,114 @@
+:root {
+  --header-height: 80px;
+  --min-content-width: 300px;
+  --max-content-width: 960px;
+  scrollbar-width: thin;
+  color-scheme: light;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  word-spacing: 0.12rem;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><circle fill="%2364748b" cx="2" cy="2" r=".5"/></svg>');
+  background-repeat: repeat;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 1rem;
+    letter-spacing: 0.025em;
+  }
+}
+
+.max-w-content {
+  max-width: var(--max-content-width);
+}
+.min-w-content {
+  min-width: var(--min-content-width);
+}
+.min-h-screen {
+  min-height: 100vh;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* header */
+
+.logo {
+  border: 2px solid var(--text-color);
+  box-sizing: border-box;
+  background-color: var(--bg-color);
+  font-weight: bold;
+  box-shadow: 0.2rem 0.2rem 0 0 var(--text-color);
+}
+.logo span {
+  margin: 0.12rem;
+}
+
+.logo:hover {
+  box-shadow: 0.2rem 0.2rem 0 0 var(--bg-color);
+}
+
+.logo:hover span {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+/* card */
+.Card-warp {
+  position: relative;
+}
+
+.Card-warp:after {
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5rem;
+  background-repeat: repeat;
+  --squircle-radius: 16px;
+  content: '';
+  top: 0.6em;
+  left: 0.6em;
+  background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><path d="m0 0 4 4Zm4 0L0 4Z" stroke-width=".5" stroke="%23000"/></svg>');
+  transition: top 0.25s, left 0.25s;
+  -webkit-mask-image: paint(squircle);
+  mask-image: paint(squircle);
+}
+
+.Card-caption {
+  position: relative;
+  border-radius: 0.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+  padding: 0.25rem;
+  --squircle-radius: 16px;
+}
+.Card-bg {
+  overflow: hidden;
+  border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-repeat: repeat;
+  --squircle-radius: 12px;
+}
+
+/* 默认主题样式 */
+html {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+html.dark {
+  background-color: #1b1b1b;
+}
+/* Alternative custom animation style */
+
