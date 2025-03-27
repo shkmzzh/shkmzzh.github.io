@@ -46,9 +46,9 @@ export default function Header() {
             </li>
           );
         })}
-          {/* <ThemeToggle></ThemeToggle> */}
+         
       </ul>
-    
+     <ThemeToggle></ThemeToggle>
     </header>
   );
 }
