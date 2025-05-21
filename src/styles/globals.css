@@ -6,6 +6,10 @@
   color-scheme: light;
 }
 
+html, body {
+  overscroll-behavior: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
