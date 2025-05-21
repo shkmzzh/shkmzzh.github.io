@@ -1,30 +1,23 @@
+'use client';
 import { useState, useEffect } from 'react';
+import  LightIcon from '@/assets/light.svg'
+import DarkIcon from '@/assets/dark.svg';
 
 export default function ThemeToggle() {
-  // 检测当前系统主题
   const detectSystemTheme = () =>
     window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
-  // 主题状态，只会是 'light' 或 'dark'
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    const stored = localStorage.getItem('theme');
-    return (stored === 'light' || stored === 'dark') ? stored : detectSystemTheme();
-  });
+  const [theme, setTheme] = useState<'light' | 'dark'>('light'); // 默认先用 light 占位
+  const [isMounted, setIsMounted] = useState(false); // 控制是否挂载完成
 
-  // 监听系统主题变化 —— 始终覆盖当前 theme
+  // 初次挂载时再读取 localStorage
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = () => {
-      const sys = detectSystemTheme();
-      applyTheme(sys);
-      setTheme(sys);
-      localStorage.setItem('theme', sys);
-    };
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
+    const stored = localStorage.getItem('theme');
+    const initial = (stored === 'light' || stored === 'dark') ? stored : detectSystemTheme();
+    setTheme(initial);
+    setIsMounted(true);
   }, []);
 
-  // 应用主题到 <html>
   const applyTheme = (applied: 'light' | 'dark') => {
     if ((document as any).startViewTransition) {
       (document as any).startViewTransition(() => {
@@ -37,13 +30,25 @@ export default function ThemeToggle() {
     }
   };
 
-  // 初次渲染及 theme 变更时，应用主题并同步到 localStorage
   useEffect(() => {
+    if (!isMounted) return;
     applyTheme(theme);
     localStorage.setItem('theme', theme);
-  }, [theme]);
+  }, [theme, isMounted]);
 
-  // 切换主题：dark ⇄ light
+  useEffect(() => {
+    if (!isMounted) return;
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = () => {
+      const sys = detectSystemTheme();
+      applyTheme(sys);
+      setTheme(sys);
+      localStorage.setItem('theme', sys);
+    };
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, [isMounted]);
+
   const toggleTheme = () => {
     setTheme(prev => {
       const next = prev === 'dark' ? 'light' : 'dark';
@@ -52,10 +57,14 @@ export default function ThemeToggle() {
     });
   };
 
+  if (!isMounted) return null; // SSR 阶段避免渲染
+
   return (
     <div>
       <p>当前主题：{theme}</p>
-      <button onClick={toggleTheme}>切换主题</button>
+      <button onClick={toggleTheme}> 
+        <img src={DarkIcon} alt="dark" />
+         </button>
     </div>
   );
 }
