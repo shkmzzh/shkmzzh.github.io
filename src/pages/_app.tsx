@@ -1,5 +1,5 @@
-import '../styles/globals.css'
-import '../styles/tailwind.css'
+import '../styles/globals.scss'
+import '../styles/tailwind.scss'
 import '../styles/theme.scss'
 import type { AppProps } from 'next/app';
 import type { ReactElement, ReactNode } from 'react';
