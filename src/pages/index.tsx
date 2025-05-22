@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import { ReactElement } from 'react';
 
-
-import Card from '@/components/Card'
+import Card from '@/components/Card';
 
 const styleObject = {
-  color: 'red',
+  color: 'red', 
 };
 
 export default function Home() {
@@ -37,18 +36,59 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <main className="py-10 md:py-20">
       <Card>
-      <div
-        style={styleObject}
-      >
-        <span>hello world</span>
-      
-      </div>
-    
+        <div style={styleObject}>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+          <p>hello world</p>
+        </div>
       </Card>
-     
-    </div>
+    </main>
   );
 }
 

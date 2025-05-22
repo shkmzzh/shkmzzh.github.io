@@ -4,11 +4,8 @@ export default function Card({ children }: { children?: ReactNode }) {
     <>
       <div className="Card-warp">
         <div className="Card-caption">
-            <div className='Card-bg'>
-            {children}
-            </div>
-            
-            </div>
+          <div className="Card-bg">{children}</div>
+        </div>
       </div>
     </>
   );

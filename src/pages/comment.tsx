@@ -3,6 +3,8 @@ import { ReactElement } from 'react';
 import Card from '@/components/Card';
 import Giscus from '@giscus/react';
 
+const theme = localStorage.getItem('theme') as any
+
 export default function Comment() {
   return (
     <main className='py-10 md:py-20'>
@@ -22,7 +24,7 @@ export default function Comment() {
             reactionsEnabled="1"
             emitMetadata="0"
             inputPosition="top"
-            theme="light"
+            theme={theme}
             lang="zh-CN"
             loading="lazy"
           />

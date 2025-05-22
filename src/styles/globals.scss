@@ -91,7 +91,7 @@ body {
   position: relative;
   border-radius: 0.5rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+  background-color: var(--bg-color);
   padding: 0.25rem;
   --squircle-radius: 16px;
 }
@@ -99,7 +99,7 @@ body {
   overflow: hidden;
   border-radius: 0.25rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: var(--bg-color);
   background-repeat: repeat;
   --squircle-radius: 12px;
 }
