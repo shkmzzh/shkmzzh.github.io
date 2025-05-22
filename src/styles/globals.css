@@ -18,8 +18,7 @@ html, body {
 
 body {
   word-spacing: 0.12rem;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-  background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><circle fill="%2364748b" cx="2" cy="2" r=".5"/></svg>');
+  background-image: url(data:image/svg+xml,%0A%20%20%20%20%20%20%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%224%22%20height%3D%224%22%20fill%3D%22none%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%222%22%20cy%3D%222%22%20r%3D%22.5%22%20fill%3D%22%23475569%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3C%2Fsvg%3E);
   background-repeat: repeat;
 }
 
@@ -105,14 +104,5 @@ body {
   --squircle-radius: 12px;
 }
 
-/* 默认主题样式 */
-html {
-  margin: 0;
-  padding: 0;
-  background-color: white;
-}
-html.dark {
-  background-color: #1b1b1b;
-}
-/* Alternative custom animation style */
+
 

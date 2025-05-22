@@ -1,11 +1,13 @@
 'use client';
 import { useState, useEffect } from 'react';
-import  LightIcon from '@/assets/light.svg'
+import LightIcon from '@/assets/light.svg';
 import DarkIcon from '@/assets/dark.svg';
 
 export default function ThemeToggle() {
   const detectSystemTheme = () =>
-    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
 
   const [theme, setTheme] = useState<'light' | 'dark'>('light'); // 默认先用 light 占位
   const [isMounted, setIsMounted] = useState(false); // 控制是否挂载完成
@@ -13,7 +15,8 @@ export default function ThemeToggle() {
   // 初次挂载时再读取 localStorage
   useEffect(() => {
     const stored = localStorage.getItem('theme');
-    const initial = (stored === 'light' || stored === 'dark') ? stored : detectSystemTheme();
+    const initial =
+      stored === 'light' || stored === 'dark' ? stored : detectSystemTheme();
     setTheme(initial);
     setIsMounted(true);
   }, []);
@@ -50,7 +53,7 @@ export default function ThemeToggle() {
   }, [isMounted]);
 
   const toggleTheme = () => {
-    setTheme(prev => {
+    setTheme((prev) => {
       const next = prev === 'dark' ? 'light' : 'dark';
       localStorage.setItem('theme', next);
       return next;
@@ -60,11 +63,8 @@ export default function ThemeToggle() {
   if (!isMounted) return null; // SSR 阶段避免渲染
 
   return (
-    <div>
-      <p>当前主题：{theme}</p>
-      <button onClick={toggleTheme}> 
-        <img src={DarkIcon} alt="dark" />
-         </button>
+    <div onClick={toggleTheme} className='p-1 bg-color ml-3'>
+      {theme === 'dark' ? <DarkIcon /> : <LightIcon />}
     </div>
   );
 }

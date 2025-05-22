@@ -39,12 +39,21 @@
 }
 /* 定义深色主题变量 */
 .dark {
-  --bg-color: #141414;
+  --bg-color: #201c14;
   --text-color: #cfd3dc;
 }
 .light {
   --bg-color: #ffffff;
   --text-color: #1e293b;
+}
+/* 默认主题样式 */
+html {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+}
+html.dark {
+  background-color: var(--bg-color);
 }
 
 .dark {
