@@ -39,53 +39,53 @@ export default function Home() {
     <main className="py-10 md:py-20">
       <Card>
         <div style={styleObject}>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
-          <p>hello world</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
+          <p>萧家萧飞</p>
         </div>
       </Card>
     </main>

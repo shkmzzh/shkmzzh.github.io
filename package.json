@@ -1,7 +1,8 @@
 {
-  "name": "my-website",
+  "name": "shkmzzh",
   "version": "0.1.0",
   "private": true,
+   "keywords": ["shkmzzh","萧家萧飞"],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
