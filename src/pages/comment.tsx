@@ -1,11 +1,19 @@
 import Layout from '@/components/Layout';
-import { ReactElement } from 'react';
+import { ReactElement, useState, useEffect } from 'react';
 import Card from '@/components/Card';
 import Giscus from '@giscus/react';
 
-const theme = localStorage.getItem('theme') as any
-
 export default function Comment() {
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  
+  useEffect(() => {
+    // 只在客户端访问localStorage
+    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
+  }, []);
+  
   return (
     <main className='py-10 md:py-20'>
       <Card>
