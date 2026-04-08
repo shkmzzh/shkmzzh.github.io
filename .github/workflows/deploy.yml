@@ -24,30 +24,30 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # 获取所有历史用于部署
-  
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'pnpm'
-  
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
           run_install: false
-  
+
       - name: Get pnpm store directory
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-  
+
       - name: Setup pnpm cache
         uses: actions/cache@v4
         with:
@@ -55,31 +55,38 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-  
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-  
+
       - name: Lint code
         run: pnpm run lint --max-warnings=0
-  
+
       - name: Build project
         run: |
           pnpm run build
           touch out/.nojekyll  # 防止GitHub Pages使用Jekyll
-  
+          # 为GitHub Pages根域名仓库添加额外配置
+          echo 'User-agent: *' > out/robots.txt
+          echo 'Allow: /' >> out/robots.txt
+          echo 'Sitemap: https://shkmzzh.github.io/sitemap.xml' >> out/robots.txt
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
-  
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './out'
-  
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-  
+
       - name: Verify deployment
         run: |
-          echo "Deployed to: ${{ steps.deployment.outputs.page_url }}"
-          echo "If you see 404, wait a few minutes for GitHub Pages to propagate"
+          echo "✅ 部署完成！"
+          echo "🌐 网站地址: https://shkmzzh.github.io"
+          echo "📊 GitHub Actions 状态: https://github.com/shkmzzh/shkmzzh.github.io/actions"
+          echo "⏳ 如果看到404，请等待几分钟让GitHub Pages传播"
+          echo "🔍 部署日志: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
