@@ -26,81 +26,85 @@ export default function Home() {
   ];
 
   return (
-    <main className="py-10 md:py-20">
+    <main className="py-16 md:py-24">
       <Card>
-        <article className="p-6 md:p-8">
-          {/* Header Section */}
-          <header className="mb-12">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
-                XF
-              </div>
-              <div>
-                <h1 className="text-3xl md:text-4xl font-bold mb-2">萧家萧飞</h1>
-                <p className="text-lg text-gray-600 dark:text-gray-400">前端开发工程师</p>
-              </div>
+        <article className="p-8 md:p-12 space-y-16">
+          {/* Hero Section */}
+          <header className="space-y-8">
+            <div className="space-y-4">
+              <h1 className="text-5xl md:text-6xl font-light tracking-tight text-gray-900 dark:text-gray-100">
+                萧家萧飞
+              </h1>
+              <p className="text-xl md:text-2xl font-light text-gray-600 dark:text-gray-400 tracking-wide">
+                前端开发工程师 / 创意编程者
+              </p>
             </div>
-            <p className="text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-              热爱前端开发，专注于构建高质量的用户界面和优秀的用户体验。
-              对新技术保持热情，持续学习和成长。
+
+            <div className="h-px bg-gradient-to-r from-gray-900 via-gray-400 to-transparent dark:from-gray-100 dark:via-gray-600 opacity-20"></div>
+
+            <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 max-w-2xl">
+              热爱前端开发与产品设计。专注于用代码创造优雅的用户界面和沉浸式体验。
+              对新技术保持好奇，在不断探索中寻求卓越。
             </p>
           </header>
 
           {/* About Section */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 pb-2 border-b-2 border-gray-300 dark:border-gray-600">
-              关于我
-            </h2>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              我是一名充满热情的前端工程师，专注于使用现代技术栈（React、TypeScript、Next.js）
-              开发高性能、可维护的网络应用。我相信好的代码不仅要功能完整，
-              还要易读、易维护、易扩展。
-            </p>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              在工作之外，我喜欢分享技术知识、学习新兴前端技术、
-              并参与开源项目。如果你有任何想法或合作机会，欢迎随时联系我！
-            </p>
+          <section className="space-y-6">
+            <div className="flex items-center gap-3">
+              <h2 className="text-3xl font-light text-gray-900 dark:text-gray-100">关于我</h2>
+              <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent dark:from-gray-700"></div>
+            </div>
+
+            <div className="space-y-4 text-gray-700 dark:text-gray-300">
+              <p className="leading-relaxed">
+                我是一名充满热情的前端工程师，相信代码可以成为艺术。
+                专注于使用现代技术栈（React、TypeScript、Next.js）开发高性能、可维护的网络应用。
+              </p>
+              <p className="leading-relaxed">
+                在工作之外，我喜欢探索设计美学、分享技术见解、参与开源项目。
+                如果你有想法或合作机会，欢迎随时交流。
+              </p>
+            </div>
           </section>
 
           {/* Skills Section */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 pb-2 border-b-2 border-gray-300 dark:border-gray-600">
-              技能标签
-            </h2>
-            <div className="flex flex-wrap gap-3">
+          <section className="space-y-6">
+            <div className="flex items-center gap-3">
+              <h2 className="text-3xl font-light text-gray-900 dark:text-gray-100">技能</h2>
+              <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent dark:from-gray-700"></div>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
               {skills.map((skill) => (
-                <span
+                <div
                   key={skill}
-                  className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+                  className="px-4 py-3 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 text-center"
                 >
                   {skill}
-                </span>
+                </div>
               ))}
             </div>
           </section>
 
           {/* Experience Section */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 pb-2 border-b-2 border-gray-300 dark:border-gray-600">
-              工作经历
-            </h2>
-            <div className="space-y-6">
+          <section className="space-y-6">
+            <div className="flex items-center gap-3">
+              <h2 className="text-3xl font-light text-gray-900 dark:text-gray-100">经历</h2>
+              <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent dark:from-gray-700"></div>
+            </div>
+
+            <div className="space-y-8">
               {experience.map((exp, index) => (
-                <div key={index} className="border-l-4 border-blue-500 pl-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100">
-                        {exp.position}
-                      </h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        {exp.company}
-                      </p>
-                    </div>
-                    <span className="text-sm text-gray-500 dark:text-gray-500 whitespace-nowrap ml-2">
-                      {exp.period}
-                    </span>
+                <div key={index} className="pb-8 border-b border-gray-200 dark:border-gray-800 last:border-b-0 last:pb-0">
+                  <div className="space-y-2 mb-4">
+                    <h3 className="text-xl font-medium text-gray-900 dark:text-gray-100">
+                      {exp.position}
+                    </h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      {exp.company} · {exp.period}
+                    </p>
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                     {exp.description}
                   </p>
                 </div>
@@ -109,23 +113,38 @@ export default function Home() {
           </section>
 
           {/* Contact Section */}
-          <section>
-            <h2 className="text-2xl font-bold mb-4 pb-2 border-b-2 border-gray-300 dark:border-gray-600">
-              联系方式
-            </h2>
+          <section className="space-y-6 pt-8 border-t border-gray-200 dark:border-gray-800">
+            <div className="flex items-center gap-3">
+              <h2 className="text-3xl font-light text-gray-900 dark:text-gray-100">联系</h2>
+              <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent dark:from-gray-700"></div>
+            </div>
+
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">邮箱</p>
-                <p className="text-gray-800 dark:text-gray-200 font-medium">
+              <a
+                href="mailto:shkmzzh@example.com"
+                className="group p-4 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
+              >
+                <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">
+                  邮箱
+                </p>
+                <p className="text-gray-900 dark:text-gray-100 font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400">
                   shkmzzh@example.com
                 </p>
-              </div>
-              <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">GitHub</p>
-                <p className="text-blue-600 dark:text-blue-400 font-medium">
+              </a>
+
+              <a
+                href="https://github.com/shkmzzh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-4 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
+              >
+                <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">
+                  GitHub
+                </p>
+                <p className="text-gray-900 dark:text-gray-100 font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400">
                   github.com/shkmzzh
                 </p>
-              </div>
+              </a>
             </div>
           </section>
         </article>

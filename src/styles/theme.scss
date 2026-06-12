@@ -1,4 +1,4 @@
-/* 定义默认（浅色）主题变量 */
+/* 定义默认（浅色）主题变量 - 高级艺术风格 */
 :root {
   --expo-in: linear(
     0 0%,
@@ -37,21 +37,28 @@
     1 100%
   );
 }
-/* 定义深色主题变量 - 水墨风格 */
+
+/* 深色主题 - 高贵深邃 */
 .dark {
-  --bg-color: #1a1815;
-  --text-color: #d4d0c8;
+  --bg-color: #0f0f0f;
+  --text-color: #e8e6e1;
+  --accent-color: #d4af37;
 }
+
+/* 浅色主题 - 宣纸质感 */
 .light {
-  --bg-color: #faf8f3;
-  --text-color: #2c2c2c;
+  --bg-color: #fdfbf7;
+  --text-color: #2a2a2a;
+  --accent-color: #1a1a1a;
 }
+
 /* 默认主题样式 */
 html {
   margin: 0;
   padding: 0;
   background-color: var(--bg-color);
 }
+
 html.dark {
   background-color: var(--bg-color);
 }
@@ -64,6 +71,7 @@ html.dark {
     color: var(--text-color);
   }
 }
+
 .light {
   .bg-color {
     background-color: var(--bg-color);
