@@ -19,77 +19,78 @@ export default function Moment() {
   const [moments, setMoments] = useState<Moment[]>([
     {
       id: 1,
-      avatar: '👨‍💻',
-      name: '萧家萧飞',
-      content: '周末在咖啡馆边写代码边享受阳光，生活与工作的完美平衡。代码即艺术。',
+      avatar: '✨',
+      name: '青春物语',
+      content: '冬天的樱花树下，雪花飘落。回忆起那些青涩而珍贵的时光，和她在一起的每一刻都闪闪发光。',
       images: [
-        { src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=800&fit=crop' },
-        { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop' }
+        { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop' },
       ],
-      timestamp: '2024-06-10 14:30',
-      likes: 28,
-      comments: 5,
+      timestamp: '2024-06-15 18:30',
+      likes: 156,
+      comments: 28,
       liked: false,
-      tags: ['生活', '咖啡', '编程']
+      tags: ['青春猪头少年', '回忆', '樱花']
     },
     {
       id: 2,
-      avatar: '👨‍💻',
-      name: '萧家萧飞',
-      content: '今天完成了新项目的重构，使用 React 18 的最新特性，性能提升了 40%！',
+      avatar: '🎭',
+      name: '第二人生',
+      content: '又一次重新开始，回到高中时代。珍惜每一个能改变的时刻，去弥补曾经的遗憾。这一次，我们不会再错过。',
       images: [
-        { src: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=800&fit=crop' }
+        { src: 'https://images.unsplash.com/photo-1516414447565-b46a149bff3b?w=800&h=800&fit=crop' },
+        { src: 'https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=800&h=800&fit=crop' },
       ],
-      timestamp: '2024-06-09 10:15',
-      likes: 35,
-      comments: 8,
+      timestamp: '2024-06-14 15:45',
+      likes: 203,
+      comments: 35,
       liked: false,
-      tags: ['React', 'Performance']
+      tags: ['ReLife', '重生', '青春']
     },
     {
       id: 3,
-      avatar: '👨‍💻',
-      name: '萧家萧飞',
-      content: '参加了线上技术分享会，学到了很多关于 WebAssembly 的知识。前端的世界真是无止境！',
+      avatar: '⚔️',
+      name: '问剑之行',
+      content: '穿越诡异的副本世界，一步步提升实力。剑来剑往，修行的路上充满了未知的冒险和惊喜。',
       images: [
-        { src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=800&fit=crop' }
+        { src: 'https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=800&h=800&fit=crop' },
+        { src: 'https://images.unsplash.com/photo-1518611505868-48510c2e2e3f?w=800&h=800&fit=crop' },
+        { src: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=800&h=800&fit=crop' },
       ],
-      timestamp: '2024-06-08 16:45',
-      likes: 18,
-      comments: 6,
+      timestamp: '2024-06-13 12:20',
+      likes: 287,
+      comments: 42,
       liked: false,
-      tags: ['Learning', 'WebAssembly']
+      tags: ['剑来', '冒险', '修行']
     },
     {
       id: 4,
-      avatar: '👨‍💻',
-      name: '萧家萧飞',
-      content: '今天在图书馆度过了整个下午，学习新技术栈，记录灵感。知识就是力量。',
+      avatar: '🌙',
+      name: '夜间时光',
+      content: '在寂静的夜晚，思考人生的意义。那些深夜的对话，那些星空下的约定，都成了心中最温暖的回忆。',
       images: [
-        { src: 'https://images.unsplash.com/photo-1507842072343-583f20270319?w=800&h=800&fit=crop' },
-        { src: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=800&fit=crop' }
+        { src: 'https://images.unsplash.com/photo-1464207687429-7505649dae38?w=800&h=800&fit=crop' },
       ],
-      timestamp: '2024-06-07 09:20',
-      likes: 22,
-      comments: 7,
+      timestamp: '2024-06-12 21:10',
+      likes: 178,
+      comments: 31,
       liked: false,
-      tags: ['学习', '灵感']
+      tags: ['夜景', '独白', '思考']
     },
     {
       id: 5,
-      avatar: '👨‍💻',
-      name: '萧家萧飞',
-      content: '周末与朋友游览城市风景，记录生活中的美好时刻。工作再忙也要享受生活。',
+      avatar: '🎪',
+      name: '日常碎片',
+      content: '学校的走廊、教室里的欢笑、食堂排队的时刻...这些再普通不过的日常，却都闪闪发光。',
       images: [
-        { src: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=800&h=800&fit=crop' },
-        { src: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=800&fit=crop' },
-        { src: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&h=800&fit=crop' }
+        { src: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=800&fit=crop' },
+        { src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=800&fit=crop' },
+        { src: 'https://images.unsplash.com/photo-1507842072343-583f20270319?w=800&h=800&fit=crop' },
       ],
-      timestamp: '2024-06-06 20:10',
-      likes: 42,
-      comments: 12,
+      timestamp: '2024-06-11 16:40',
+      likes: 312,
+      comments: 58,
       liked: false,
-      tags: ['生活', '旅行', '摄影']
+      tags: ['日常', '校园', '青春']
     }
   ]);
 
@@ -121,10 +122,10 @@ export default function Moment() {
         <article className="p-8 md:p-12">
           <header className="mb-12">
             <h1 className="text-5xl md:text-6xl font-light tracking-tight text-gray-900 dark:text-gray-100 mb-4">
-              生活动态
+              动漫时光
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-400">
-              分享前端开发的日常与生活中的美好时刻
+              在这些精彩的故事中，探寻属于我们的青春与冒险
             </p>
           </header>
 
@@ -137,7 +138,7 @@ export default function Moment() {
               >
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-gray-300 to-gray-400 dark:from-gray-700 dark:to-gray-600 rounded-full flex items-center justify-center text-lg flex-shrink-0">
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 dark:from-purple-600 dark:to-pink-700 rounded-full flex items-center justify-center text-xl flex-shrink-0 font-bold text-white">
                     {moment.avatar}
                   </div>
                   <div className="flex-1">
@@ -151,8 +152,8 @@ export default function Moment() {
                 </div>
 
                 {/* Content */}
-                <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-                  {moment.content}
+                <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed italic">
+                  "{moment.content}"
                 </p>
 
                 {/* Images Gallery */}
@@ -166,7 +167,7 @@ export default function Moment() {
                       <div
                         key={idx}
                         onClick={() => openLightbox(img.src)}
-                        className="relative aspect-square rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800 hover:shadow-lg transition-all duration-300 cursor-pointer group/img"
+                        className="relative aspect-square rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800 hover:shadow-lg transition-all duration-300 cursor-pointer group/img border border-gray-300 dark:border-gray-700"
                       >
                         <img
                           src={img.src}
@@ -175,7 +176,7 @@ export default function Moment() {
                           loading="lazy"
                         />
                         {/* Hover overlay */}
-                        <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/30 transition-colors duration-300 flex items-center justify-center">
                           <svg className="w-8 h-8 text-white opacity-0 group-hover/img:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
                           </svg>
@@ -197,7 +198,7 @@ export default function Moment() {
                     {moment.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs px-2.5 py-1 bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 rounded-full font-medium"
+                        className="text-xs px-2.5 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full font-medium"
                       >
                         #{tag}
                       </span>
@@ -211,11 +212,11 @@ export default function Moment() {
                     onClick={() => toggleLike(moment.id)}
                     className={`flex items-center gap-1.5 px-3 py-2 rounded-lg transition-all duration-200 ${
                       moment.liked
-                        ? 'text-red-500 bg-red-50 dark:bg-red-900/20'
+                        ? 'text-pink-500 bg-pink-50 dark:bg-pink-900/20'
                         : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
                     }`}
                   >
-                    <span>{moment.liked ? '❤️' : '🤍'}</span>
+                    <span>{moment.liked ? '💖' : '🤍'}</span>
                     <span className="font-medium">{moment.likes}</span>
                   </button>
                   <button className="flex items-center gap-1.5 px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all duration-200">
@@ -229,7 +230,7 @@ export default function Moment() {
 
           {/* Empty State Message */}
           <div className="mt-12 text-center text-gray-500 dark:text-gray-400">
-            <p className="text-sm">更多精彩内容敬请期待... 📝</p>
+            <p className="text-sm">还有更多的故事在等待被诉说... 🌟</p>
           </div>
         </article>
       </Card>
