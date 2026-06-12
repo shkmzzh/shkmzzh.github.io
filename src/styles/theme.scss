@@ -37,14 +37,14 @@
     1 100%
   );
 }
-/* 定义深色主题变量 */
+/* 定义深色主题变量 - 水墨风格 */
 .dark {
-  --bg-color: #201c14;
-  --text-color: #cfd3dc;
+  --bg-color: #1a1815;
+  --text-color: #d4d0c8;
 }
 .light {
-  --bg-color: #ffffff;
-  --text-color: #1e293b;
+  --bg-color: #faf8f3;
+  --text-color: #2c2c2c;
 }
 /* 默认主题样式 */
 html {
