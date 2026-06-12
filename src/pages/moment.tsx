@@ -7,7 +7,7 @@ interface Moment {
   avatar: string;
   name: string;
   content: string;
-  images: string[];
+  images: { src: string; live?: string }[];
   timestamp: string;
   likes: number;
   comments: number;
@@ -23,8 +23,8 @@ export default function Moment() {
       name: '萧家萧飞',
       content: '周末在咖啡馆边写代码边享受阳光，生活与工作的完美平衡。代码即艺术。',
       images: [
-        'https://images.unsplash.com/photo-1554118811-1e0d58224d10?w=400&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop'
+        { src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=800&fit=crop' },
+        { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop' }
       ],
       timestamp: '2024-06-10 14:30',
       likes: 28,
@@ -38,7 +38,7 @@ export default function Moment() {
       name: '萧家萧飞',
       content: '今天完成了新项目的重构，使用 React 18 的最新特性，性能提升了 40%！',
       images: [
-        'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=400&fit=crop'
+        { src: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=800&fit=crop' }
       ],
       timestamp: '2024-06-09 10:15',
       likes: 35,
@@ -52,7 +52,7 @@ export default function Moment() {
       name: '萧家萧飞',
       content: '参加了线上技术分享会，学到了很多关于 WebAssembly 的知识。前端的世界真是无止境！',
       images: [
-        'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop'
+        { src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=800&fit=crop' }
       ],
       timestamp: '2024-06-08 16:45',
       likes: 18,
@@ -66,8 +66,8 @@ export default function Moment() {
       name: '萧家萧飞',
       content: '今天在图书馆度过了整个下午，学习新技术栈，记录灵感。知识就是力量。',
       images: [
-        'https://images.unsplash.com/photo-1507842072343-583f20270319?w=400&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=400&fit=crop'
+        { src: 'https://images.unsplash.com/photo-1507842072343-583f20270319?w=800&h=800&fit=crop' },
+        { src: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=800&fit=crop' }
       ],
       timestamp: '2024-06-07 09:20',
       likes: 22,
@@ -81,9 +81,9 @@ export default function Moment() {
       name: '萧家萧飞',
       content: '周末与朋友游览城市风景，记录生活中的美好时刻。工作再忙也要享受生活。',
       images: [
-        'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=400&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=400&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=400&fit=crop'
+        { src: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=800&h=800&fit=crop' },
+        { src: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=800&fit=crop' },
+        { src: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&h=800&fit=crop' }
       ],
       timestamp: '2024-06-06 20:10',
       likes: 42,
@@ -92,6 +92,8 @@ export default function Moment() {
       tags: ['生活', '旅行', '摄影']
     }
   ]);
+
+  const [lightbox, setLightbox] = useState<{ isOpen: boolean; image?: string }>({ isOpen: false });
 
   const toggleLike = (id: number) => {
     setMoments(moments.map(moment =>
@@ -103,6 +105,14 @@ export default function Moment() {
           }
         : moment
     ));
+  };
+
+  const openLightbox = (image: string) => {
+    setLightbox({ isOpen: true, image });
+  };
+
+  const closeLightbox = () => {
+    setLightbox({ isOpen: false });
   };
 
   return (
@@ -148,22 +158,34 @@ export default function Moment() {
                 {/* Images Gallery */}
                 {moment.images.length > 0 && (
                   <div className={`mb-4 grid gap-2 ${
-                    moment.images.length === 1 ? 'grid-cols-1' :
+                    moment.images.length === 1 ? 'grid-cols-1 max-w-md' :
                     moment.images.length === 2 ? 'grid-cols-2' :
-                    moment.images.length === 3 ? 'grid-cols-3' :
                     'grid-cols-3'
                   }`}>
                     {moment.images.map((img, idx) => (
                       <div
                         key={idx}
-                        className="relative aspect-square rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800 hover:shadow-lg transition-shadow duration-300"
+                        onClick={() => openLightbox(img.src)}
+                        className="relative aspect-square rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800 hover:shadow-lg transition-all duration-300 cursor-pointer group/img"
                       >
                         <img
-                          src={img}
+                          src={img.src}
                           alt={`Moment ${moment.id} Image ${idx + 1}`}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-300"
                           loading="lazy"
                         />
+                        {/* Hover overlay */}
+                        <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                          <svg className="w-8 h-8 text-white opacity-0 group-hover/img:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                          </svg>
+                        </div>
+                        {/* Live Photo indicator */}
+                        {img.live && (
+                          <div className="absolute top-2 right-2 px-2 py-1 bg-black/50 text-white text-xs rounded font-medium">
+                            Live
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
@@ -211,6 +233,42 @@ export default function Moment() {
           </div>
         </article>
       </Card>
+
+      {/* Lightbox Modal */}
+      {lightbox.isOpen && lightbox.image && (
+        <div
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={closeLightbox}
+        >
+          <div className="relative max-w-4xl max-h-[90vh] w-full h-full flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+            {/* Close button */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur"
+              aria-label="Close"
+            >
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Image */}
+            <img
+              src={lightbox.image}
+              alt="Full screen preview"
+              className="max-w-full max-h-full w-auto h-auto object-contain rounded-lg shadow-2xl animate-in fade-in zoom-in duration-300"
+            />
+
+            {/* Info */}
+            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-center gap-2 text-white/70 text-sm">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zm-11-1a1 1 0 11-2 0 1 1 0 012 0z" clipRule="evenodd" />
+              </svg>
+              点击背景关闭
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
