@@ -85,26 +85,12 @@ html.dark body {
 /* header */
 
 .logo {
-  border: 2px solid var(--text-color);
-  box-sizing: border-box;
-  background-color: var(--bg-color);
-  font-weight: bold;
-  box-shadow: 0.2rem 0.2rem 0 0 var(--text-color);
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.logo span {
-  margin: 0.12rem;
+  transition: all 0.3s ease;
 }
 
 .logo:hover {
-  box-shadow: 0.2rem 0.2rem 0 0 var(--bg-color);
-  transform: translate(-2px, -2px);
-  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.15));
-}
-
-.logo:hover span {
-  background-color: var(--text-color);
-  color: var(--bg-color);
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.25));
+  transform: scale(1.05);
 }
 
 /* card */
