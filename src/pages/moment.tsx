@@ -21,35 +21,42 @@ export default function Moment() {
       id: 1,
       avatar: '👨‍💻',
       name: '萧家萧飞',
-      content: '今天完成了新项目的重构，使用 React 18 的最新特性，性能提升了 40%！🚀',
-      images: ['📊'],
+      content: '周末在咖啡馆边写代码边享受阳光，生活与工作的完美平衡。代码即艺术。',
+      images: [
+        'https://images.unsplash.com/photo-1554118811-1e0d58224d10?w=400&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop'
+      ],
       timestamp: '2024-06-10 14:30',
-      likes: 12,
-      comments: 3,
+      likes: 28,
+      comments: 5,
       liked: false,
-      tags: ['React', 'Performance']
+      tags: ['生活', '咖啡', '编程']
     },
     {
       id: 2,
       avatar: '👨‍💻',
       name: '萧家萧飞',
-      content: '刚刚发布了个人博客的新版本，支持深色模式和响应式设计。欢迎大家来访问 ✨',
-      images: ['🌙', '📱'],
+      content: '今天完成了新项目的重构，使用 React 18 的最新特性，性能提升了 40%！',
+      images: [
+        'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=400&fit=crop'
+      ],
       timestamp: '2024-06-09 10:15',
-      likes: 28,
+      likes: 35,
       comments: 8,
       liked: false,
-      tags: ['Web Design']
+      tags: ['React', 'Performance']
     },
     {
       id: 3,
       avatar: '👨‍💻',
       name: '萧家萧飞',
-      content: '参加了线上技术分享会，学到了很多关于 WebAssembly 的知识。前端的世界真是无止境啊！',
-      images: ['📚'],
+      content: '参加了线上技术分享会，学到了很多关于 WebAssembly 的知识。前端的世界真是无止境！',
+      images: [
+        'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop'
+      ],
       timestamp: '2024-06-08 16:45',
-      likes: 15,
-      comments: 5,
+      likes: 18,
+      comments: 6,
       liked: false,
       tags: ['Learning', 'WebAssembly']
     },
@@ -57,25 +64,32 @@ export default function Moment() {
       id: 4,
       avatar: '👨‍💻',
       name: '萧家萧飞',
-      content: '今天用 TypeScript 重写了一个复杂的状态管理逻辑，代码质量显著提升。类型安全真的很重要！💪',
-      images: ['🔧'],
+      content: '今天在图书馆度过了整个下午，学习新技术栈，记录灵感。知识就是力量。',
+      images: [
+        'https://images.unsplash.com/photo-1507842072343-583f20270319?w=400&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=400&fit=crop'
+      ],
       timestamp: '2024-06-07 09:20',
-      likes: 18,
-      comments: 4,
+      likes: 22,
+      comments: 7,
       liked: false,
-      tags: ['TypeScript', 'Architecture']
+      tags: ['学习', '灵感']
     },
     {
       id: 5,
       avatar: '👨‍💻',
       name: '萧家萧飞',
-      content: '周末完成了一个有趣的前端小项目，用 Canvas 实现了一个交互式可视化效果。编程就是艺术！🎨',
-      images: ['🎨', '✨'],
+      content: '周末与朋友游览城市风景，记录生活中的美好时刻。工作再忙也要享受生活。',
+      images: [
+        'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=400&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=400&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=400&fit=crop'
+      ],
       timestamp: '2024-06-06 20:10',
-      likes: 35,
+      likes: 42,
       comments: 12,
       liked: false,
-      tags: ['Canvas', 'Creative']
+      tags: ['生活', '旅行', '摄影']
     }
   ]);
 
@@ -92,54 +106,64 @@ export default function Moment() {
   };
 
   return (
-    <main className="py-10 md:py-20">
+    <main className="py-16 md:py-24">
       <Card>
-        <article className="p-6 md:p-8">
-          <header className="mb-10">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2">生活动态</h1>
-            <p className="text-gray-600 dark:text-gray-400">
-              分享我的前端开发日常和技术见解
+        <article className="p-8 md:p-12">
+          <header className="mb-12">
+            <h1 className="text-5xl md:text-6xl font-light tracking-tight text-gray-900 dark:text-gray-100 mb-4">
+              生活动态
+            </h1>
+            <p className="text-lg text-gray-600 dark:text-gray-400">
+              分享前端开发的日常与生活中的美好时刻
             </p>
           </header>
 
           {/* Moments List */}
-          <div className="space-y-6">
+          <div className="space-y-8">
             {moments.map((moment) => (
               <div
                 key={moment.id}
-                className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 md:p-5 hover:shadow-md transition-shadow"
+                className="pb-8 border-b border-gray-200 dark:border-gray-800 last:border-b-0 last:pb-0 group"
               >
                 {/* Header */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-lg">
-                      {moment.avatar}
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-900 dark:text-white">
-                        {moment.name}
-                      </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">
-                        {moment.timestamp}
-                      </p>
-                    </div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-gray-300 to-gray-400 dark:from-gray-700 dark:to-gray-600 rounded-full flex items-center justify-center text-lg flex-shrink-0">
+                    {moment.avatar}
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-medium text-gray-900 dark:text-gray-100">
+                      {moment.name}
+                    </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      {moment.timestamp}
+                    </p>
                   </div>
                 </div>
 
                 {/* Content */}
-                <p className="text-gray-700 dark:text-gray-300 mb-3 leading-relaxed text-sm md:text-base">
+                <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
                   {moment.content}
                 </p>
 
-                {/* Images/Emojis */}
+                {/* Images Gallery */}
                 {moment.images.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className={`mb-4 grid gap-2 ${
+                    moment.images.length === 1 ? 'grid-cols-1' :
+                    moment.images.length === 2 ? 'grid-cols-2' :
+                    moment.images.length === 3 ? 'grid-cols-3' :
+                    'grid-cols-3'
+                  }`}>
                     {moment.images.map((img, idx) => (
                       <div
                         key={idx}
-                        className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-lg flex items-center justify-center text-3xl md:text-4xl"
+                        className="relative aspect-square rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-800 hover:shadow-lg transition-shadow duration-300"
                       >
-                        {img}
+                        <img
+                          src={img}
+                          alt={`Moment ${moment.id} Image ${idx + 1}`}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
+                        />
                       </div>
                     ))}
                   </div>
@@ -151,7 +175,7 @@ export default function Moment() {
                     {moment.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs px-2 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded"
+                        className="text-xs px-2.5 py-1 bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 rounded-full font-medium"
                       >
                         #{tag}
                       </span>
@@ -159,22 +183,22 @@ export default function Moment() {
                   </div>
                 )}
 
-                {/* Footer Actions */}
-                <div className="flex justify-between pt-3 border-t border-gray-200 dark:border-gray-700 text-sm">
+                {/* Actions */}
+                <div className="flex gap-4 pt-3 text-sm">
                   <button
                     onClick={() => toggleLike(moment.id)}
-                    className={`flex items-center gap-1 px-3 py-2 rounded transition-colors ${
+                    className={`flex items-center gap-1.5 px-3 py-2 rounded-lg transition-all duration-200 ${
                       moment.liked
                         ? 'text-red-500 bg-red-50 dark:bg-red-900/20'
-                        : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700'
+                        : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
                     }`}
                   >
                     <span>{moment.liked ? '❤️' : '🤍'}</span>
-                    <span>{moment.likes}</span>
+                    <span className="font-medium">{moment.likes}</span>
                   </button>
-                  <button className="flex items-center gap-1 px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors">
+                  <button className="flex items-center gap-1.5 px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all duration-200">
                     <span>💬</span>
-                    <span>{moment.comments}</span>
+                    <span className="font-medium">{moment.comments}</span>
                   </button>
                 </div>
               </div>
