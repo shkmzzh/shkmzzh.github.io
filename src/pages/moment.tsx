@@ -1,6 +1,7 @@
 import Layout from '@/components/Layout';
 import { ReactElement, useState, useEffect, useRef } from 'react';
 import Card from '@/components/Card';
+import defaultMomentsData from '@/data/moments.json';
 
 interface Moment {
   id: number;
@@ -15,51 +16,8 @@ interface Moment {
   tags?: string[];
 }
 
-const DEFAULT_MOMENTS: Moment[] = [
-  {
-    id: 1,
-    avatar: '👨‍💻',
-    name: '萧家萧飞',
-    content: '周末在咖啡馆边写代码边享受阳光，生活与工作的完美平衡。代码即艺术。',
-    images: [
-      { src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=800&fit=crop' },
-      { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop' }
-    ],
-    timestamp: '2024-06-10 14:30',
-    likes: 28,
-    comments: 5,
-    liked: false,
-    tags: ['生活', '咖啡', '编程']
-  },
-  {
-    id: 2,
-    avatar: '👨‍💻',
-    name: '萧家萧飞',
-    content: '今天完成了新项目的重构，使用 React 18 的最新特性，性能提升了 40%！',
-    images: [
-      { src: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=800&fit=crop' }
-    ],
-    timestamp: '2024-06-09 10:15',
-    likes: 35,
-    comments: 8,
-    liked: false,
-    tags: ['React', 'Performance']
-  },
-  {
-    id: 3,
-    avatar: '👨‍💻',
-    name: '萧家萧飞',
-    content: '参加了线上技术分享会，学到了很多关于 WebAssembly 的知识。前端的世界真是无止境！',
-    images: [
-      { src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=800&fit=crop' }
-    ],
-    timestamp: '2024-06-08 16:45',
-    likes: 18,
-    comments: 6,
-    liked: false,
-    tags: ['Learning', 'WebAssembly']
-  }
-];
+// Default moments imported from JSON file at build time — works on static hosting
+const DEFAULT_MOMENTS: Moment[] = defaultMomentsData as Moment[];
 
 export default function Moment() {
   const [moments, setMoments] = useState<Moment[]>([]);
@@ -87,32 +45,21 @@ export default function Moment() {
     loadMoments();
   }, []);
 
-  // Load moments: try JSON file API first, then localStorage, then fallback to DEFAULT_MOMENTS
-  const loadMoments = async () => {
-    try {
-      const res = await fetch('/api/moments');
-      if (res.ok) {
-        const data = await res.json();
-        if (Array.isArray(data) && data.length > 0) {
-          setMoments(data);
-          return;
-        }
-      }
-    } catch {
-      // API not available (production or error), fall through
-    }
-
-    // Fallback: localStorage (for backward compatibility)
+  // Load moments: localStorage first (for user edits), then JSON file (imported at build time)
+  const loadMoments = () => {
     const stored = localStorage.getItem('moments_data');
     if (stored) {
       try {
-        setMoments(JSON.parse(stored));
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setMoments(parsed);
+          return;
+        }
       } catch {
-        setMoments(DEFAULT_MOMENTS);
+        // ignore parse error
       }
-    } else {
-      setMoments(DEFAULT_MOMENTS);
     }
+    setMoments(DEFAULT_MOMENTS);
   };
 
   // Persist moments: write to JSON file API (dev) + localStorage (production fallback)
