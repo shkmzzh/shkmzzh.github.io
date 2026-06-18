@@ -83,28 +83,81 @@ export default function Moment() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    setIsDev(process.env.NODE_ENV === 'development');
+    loadMoments();
+  }, []);
+
+  // Load moments: try JSON file API first, then localStorage, then fallback to DEFAULT_MOMENTS
+  const loadMoments = async () => {
+    try {
+      const res = await fetch('/api/moments');
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          setMoments(data);
+          return;
+        }
+      }
+    } catch {
+      // API not available (production or error), fall through
+    }
+
+    // Fallback: localStorage (for backward compatibility)
     const stored = localStorage.getItem('moments_data');
     if (stored) {
       try {
         setMoments(JSON.parse(stored));
-      } catch (e) {
+      } catch {
         setMoments(DEFAULT_MOMENTS);
       }
     } else {
       setMoments(DEFAULT_MOMENTS);
     }
+  };
 
-    setIsDev(process.env.NODE_ENV === 'development');
-  }, []);
-
-  const saveMoments = (newMoments: Moment[]) => {
+  // Persist moments: write to JSON file API (dev) + localStorage (production fallback)
+  const saveMoments = async (newMoments: Moment[]) => {
     setMoments(newMoments);
+
+    // Always save to localStorage as fallback
     localStorage.setItem('moments_data', JSON.stringify(newMoments));
+
+    // In dev mode, also persist to the JSON file via API
+    if (process.env.NODE_ENV === 'development') {
+      try {
+        await fetch('/api/moments', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ moments: newMoments }),
+        });
+      } catch (err) {
+        console.error('Failed to persist moments to JSON file:', err);
+      }
+    }
   };
 
   const isMediaVideo = (src: string) => {
     const videoExtensions = ['.mp4', '.webm', '.mov', '.ogg', '.m4v'];
     return videoExtensions.some(ext => src.toLowerCase().endsWith(ext)) || src.startsWith('data:video/');
+  };
+
+  // Check if a file path is a local upload (under /uploads/)
+  const isLocalUpload = (src: string) => {
+    return src.startsWith('/uploads/');
+  };
+
+  // Delete a file from the server
+  const deleteUploadedFile = async (filePath: string) => {
+    if (!isLocalUpload(filePath)) return;
+    try {
+      await fetch('/api/delete-file', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filePath }),
+      });
+    } catch (err) {
+      console.error('Failed to delete file:', filePath, err);
+    }
   };
 
   const toggleLike = (id: number) => {
@@ -128,11 +181,22 @@ export default function Moment() {
     setLightbox({ isOpen: false });
   };
 
-  const handleDelete = (id: number) => {
-    if (confirm('确认删除这条动态吗？')) {
-      const updated = moments.filter(m => m.id !== id);
-      saveMoments(updated);
+  const handleDelete = async (id: number) => {
+    if (!confirm('确认删除这条动态吗？')) return;
+
+    const momentToDelete = moments.find(m => m.id === id);
+
+    // Delete associated uploaded files first
+    if (momentToDelete) {
+      for (const img of momentToDelete.images) {
+        if (isLocalUpload(img.src)) {
+          await deleteUploadedFile(img.src);
+        }
+      }
     }
+
+    const updated = moments.filter(m => m.id !== id);
+    saveMoments(updated);
   };
 
   const openCreateForm = () => {
@@ -209,7 +273,7 @@ export default function Moment() {
     }
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const formattedTags = tagsInput
@@ -222,6 +286,8 @@ export default function Moment() {
       .map(url => url.trim())
       .filter(url => url.length > 0)
       .map(src => ({ src }));
+
+    let updated: Moment[];
 
     if (formMode === 'create') {
       const newMoment: Moment = {
@@ -236,9 +302,9 @@ export default function Moment() {
         liked: false,
         tags: formattedTags
       };
-      saveMoments([newMoment, ...moments]);
+      updated = [newMoment, ...moments];
     } else if (formMode === 'edit' && editingId !== null) {
-      const updated = moments.map(m =>
+      updated = moments.map(m =>
         m.id === editingId
           ? {
               ...m,
@@ -250,9 +316,26 @@ export default function Moment() {
             }
           : m
       );
-      saveMoments(updated);
+    } else {
+      return;
     }
 
+    // If editing, check for removed images and delete them
+    if (formMode === 'edit' && editingId !== null) {
+      const oldMoment = moments.find(m => m.id === editingId);
+      if (oldMoment) {
+        const oldSrcs = oldMoment.images.map(img => img.src);
+        const newSrcs = formattedImages.map(img => img.src);
+        const removedSrcs = oldSrcs.filter(src => !newSrcs.includes(src));
+        for (const src of removedSrcs) {
+          if (isLocalUpload(src)) {
+            await deleteUploadedFile(src);
+          }
+        }
+      }
+    }
+
+    saveMoments(updated);
     setShowForm(false);
   };
 
