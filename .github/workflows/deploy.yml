@@ -25,25 +25,29 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: latest
-
+      # 1. 先把 Node.js 环境稳妥地装好（这里指定你需要的 Node 22）
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'pnpm'
 
+      # 2. 彻底抛弃 buggy 插件，直接用最稳的 npm 命令行安装 pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # 3. 安装依赖（保留上一轮加的安全变量，防止 pnpm 拦截构建脚本）
       - name: Install dependencies
         run: pnpm install
+        env:
+          NPM_CONFIG_ONLY_BUILT_DEPENDENCIES: "*"
 
+      # 4. 执行打包
       - name: Build project
         run: |
           pnpm run build
           touch out/.nojekyll
 
+      # 5. 部署到 GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
