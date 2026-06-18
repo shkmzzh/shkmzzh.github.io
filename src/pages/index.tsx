@@ -33,7 +33,7 @@ export default function Home() {
           <header className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl font-light tracking-tight text-gray-900 dark:text-gray-100">
-                吴胜军
+                萧家萧飞
               </h1>
               <p className="text-xl md:text-2xl font-light text-gray-600 dark:text-gray-400 tracking-wide">
                 前端开发工程师 / 创意编程者

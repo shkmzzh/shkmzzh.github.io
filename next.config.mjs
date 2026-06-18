@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  output: 'export',
+  // Only use static export in non-development environments to keep local Next.js API routes working
+  output: process.env.NODE_ENV === 'development' ? undefined : 'export',
   reactStrictMode: true,
   images: {
     unoptimized: true,
