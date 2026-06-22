@@ -38,18 +38,20 @@
   );
 }
 
-/* 深色主题 - 高贵深邃 */
+/* 深色主题 - 优雅深邃 */
 .dark {
-  --bg-color: #0f0f0f;
-  --text-color: #e8e6e1;
-  --accent-color: #d4af37;
+  --bg-color: #090d16;
+  --text-color: #f1f5f9;
+  --accent-color: #818cf8;
+  --accent-light: rgba(129, 140, 248, 0.12);
 }
 
-/* 浅色主题 - 宣纸质感 */
+/* 浅色主题 - 现代极简 */
 .light {
-  --bg-color: #fdfbf7;
-  --text-color: #2a2a2a;
-  --accent-color: #1a1a1a;
+  --bg-color: #f8fafc;
+  --text-color: #0f172a;
+  --accent-color: #4f46e5;
+  --accent-light: rgba(79, 70, 229, 0.08);
 }
 
 /* 默认主题样式 */
