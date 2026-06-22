@@ -389,10 +389,6 @@ export default function Moment() {
                                 loading="lazy"
                                 onClick={() => openLightbox(img.src)}
                               />
-                              {/* Hover overlay with smooth blur */}
-                              <div 
-                                className="absolute inset-0 bg-black/0 group-hover/img:bg-black/10 backdrop-blur-[1px] transition-all duration-300 pointer-events-none"
-                              />
                             </>
                           )}
                         </div>
