@@ -74,7 +74,7 @@ export default function Header() {
                 onClick={() => setLinkStyleId(item.id)}
                 className={`
                   whitespace-nowrap text-center inline-block px-3 py-2 text-sm font-medium
-                  transition-all duration-200 relative
+                  transition-colors duration-200 relative
                   ${isActive
                     ? 'text-gray-900 dark:text-gray-100'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
@@ -87,7 +87,7 @@ export default function Header() {
                 {/* 下划线动效 */}
                 <div className={`
                   absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-800 dark:via-gray-200 to-transparent
-                  transition-all duration-300
+                  transition-[opacity,transform] duration-300 will-change-[opacity,transform]
                   ${isActive ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}
                 `}></div>
               </li>

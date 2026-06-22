@@ -86,7 +86,8 @@ html.dark body {
 /* header */
 
 .logo {
-  transition: all 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, filter;
 }
 
 .logo:hover {
@@ -113,7 +114,7 @@ html.dark .logo:hover {
   top: 0.5em;
   left: 0.5em;
   background-color: rgba(0, 0, 0, 0.03);
-  transition: all 0.25s ease;
+  transition: background-color 0.25s ease;
   border-radius: 1rem;
 }
 
@@ -125,7 +126,8 @@ html.dark .logo:hover {
   border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   backdrop-filter: blur(4px);
-  transition: all 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, box-shadow;
 }
 
 .Card-caption:hover {
@@ -167,7 +169,7 @@ p {
 
 a {
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
 }
 
 /* 分割线 */

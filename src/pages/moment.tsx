@@ -370,7 +370,7 @@ export default function Moment() {
                       {moment.images.map((img, idx) => (
                         <div
                           key={idx}
-                          className="relative aspect-video sm:aspect-square rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-900 border border-safe-color/20 hover:shadow-md transition-all duration-300 group/img"
+                          className="relative aspect-video sm:aspect-square rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-900 border border-safe-color/20 group/img"
                         >
                           {isMediaVideo(img.src) ? (
                             <video
@@ -385,18 +385,14 @@ export default function Moment() {
                               <img
                                 src={img.src}
                                 alt={`Moment ${moment.id} Image ${idx + 1}`}
-                                className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500 ease-out cursor-pointer"
+                                className="w-full h-full object-cover cursor-pointer"
                                 loading="lazy"
                                 onClick={() => openLightbox(img.src)}
                               />
                               {/* Hover overlay with smooth blur */}
                               <div 
-                                className="absolute inset-0 bg-black/0 group-hover/img:bg-black/10 backdrop-blur-[1px] transition-all duration-300 flex items-center justify-center pointer-events-none"
-                              >
-                                <svg className="w-8 h-8 text-white opacity-0 group-hover/img:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
-                                </svg>
-                              </div>
+                                className="absolute inset-0 bg-black/0 group-hover/img:bg-black/10 backdrop-blur-[1px] transition-all duration-300 pointer-events-none"
+                              />
                             </>
                           )}
                         </div>

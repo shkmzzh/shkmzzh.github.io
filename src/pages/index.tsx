@@ -78,7 +78,7 @@ export default function Home() {
               {skills.map((skill) => (
                 <div
                   key={skill}
-                  className="px-4 py-3 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 text-center"
+                  className="px-4 py-3 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 text-center"
                 >
                   {skill}
                 </div>
@@ -122,7 +122,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-4">
               <a
                 href="mailto:shkmzzh@example.com"
-                className="group p-4 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
+                className="group p-4 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
               >
                 <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">
                   邮箱
@@ -136,7 +136,7 @@ export default function Home() {
                 href="https://github.com/shkmzzh"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-4 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
+                className="group p-4 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
               >
                 <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">
                   GitHub
