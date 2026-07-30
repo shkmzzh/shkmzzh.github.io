@@ -25,125 +25,182 @@ export default function Home() {
     }
   ];
 
+  const metrics = [
+    { value: '12', label: '核心技能' },
+    { value: '02', label: '项目阶段' },
+    { value: '24h', label: '保持在线' },
+  ];
+
+  const focusAreas = [
+    '界面工程',
+    '动效体验',
+    '性能优化',
+    '产品设计',
+  ];
+
   return (
-    <main className="py-16 md:py-24">
+    <main className="home-page">
       <Card>
-        <article className="p-8 md:p-12 space-y-16">
-          {/* Hero Section */}
-          <header className="space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl font-light tracking-tight text-gray-900 dark:text-gray-100">
-                萧家萧飞
-              </h1>
-              <p className="text-xl md:text-2xl font-light text-gray-600 dark:text-gray-400 tracking-wide">
-                前端开发工程师 / 创意编程者
+        <article className="home-panel">
+          <section className="hero-grid" aria-label="个人介绍">
+            <div className="hero-copy">
+              <div className="status-row">
+                <span className="status-dot" aria-hidden="true"></span>
+                <span>ONLINE / FRONTEND INTERFACE ENGINEER</span>
+              </div>
+
+              <div className="hero-title-group">
+                <p className="hero-kicker">Personal Command Center</p>
+                <h1 className="hero-title">
+                  萧家萧飞
+                </h1>
+                <p className="hero-subtitle">
+                  前端开发工程师 / 创意编程者
+                </p>
+              </div>
+
+              <p className="hero-description">
+                热爱前端开发与产品设计。专注于用代码创造优雅的用户界面和沉浸式体验，
+                在复杂系统里寻找清晰、速度与一点点未来感。
               </p>
+
+              <div className="hero-actions" aria-label="联系方式">
+                <a href="mailto:shkmzzh@example.com" className="command-button command-button--primary">
+                  启动联系
+                </a>
+                <a
+                  href="https://github.com/shkmzzh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="command-button"
+                >
+                  访问 GitHub
+                </a>
+              </div>
             </div>
 
-            <div className="h-px bg-gradient-to-r from-gray-900 via-gray-400 to-transparent dark:from-gray-100 dark:via-gray-600 opacity-20"></div>
-
-            <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 max-w-2xl">
-              热爱前端开发与产品设计。专注于用代码创造优雅的用户界面和沉浸式体验。
-              对新技术保持好奇，在不断探索中寻求卓越。
-            </p>
-          </header>
-
-          {/* About Section */}
-          <section className="space-y-6">
-            <div className="flex items-center gap-3">
-              <h2 className="text-3xl font-light text-gray-900 dark:text-gray-100">关于我</h2>
-              <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent dark:from-gray-700"></div>
-            </div>
-
-            <div className="space-y-4 text-gray-700 dark:text-gray-300">
-              <p className="leading-relaxed">
-                我是一名充满热情的前端工程师，相信代码可以成为艺术。
-                专注于使用现代技术栈（React、TypeScript、Next.js）开发高性能、可维护的网络应用。
-              </p>
-              <p className="leading-relaxed">
-                在工作之外，我喜欢探索设计美学、分享技术见解、参与开源项目。
-                如果你有想法或合作机会，欢迎随时交流。
-              </p>
+            <div className="holo-dashboard" aria-hidden="true">
+              <div className="holo-dashboard__frame">
+                <div className="holo-dashboard__scan"></div>
+                <div className="holo-ring">
+                  <div className="holo-ring__orbit holo-ring__orbit--outer"></div>
+                  <div className="holo-ring__orbit holo-ring__orbit--middle"></div>
+                  <div className="holo-ring__core">
+                    <span>SX</span>
+                  </div>
+                </div>
+                <div className="holo-readout holo-readout--top">
+                  <span>UI CORE</span>
+                  <strong>98.7%</strong>
+                </div>
+                <div className="holo-readout holo-readout--bottom">
+                  <span>LATENCY</span>
+                  <strong>LOW</strong>
+                </div>
+              </div>
             </div>
           </section>
 
-          {/* Skills Section */}
-          <section className="space-y-6">
-            <div className="flex items-center gap-3">
-              <h2 className="text-3xl font-light text-gray-900 dark:text-gray-100">技能</h2>
-              <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent dark:from-gray-700"></div>
-            </div>
+          <section className="metric-grid" aria-label="状态概览">
+            {metrics.map((metric) => (
+              <div className="metric-tile" key={metric.label}>
+                <strong>{metric.value}</strong>
+                <span>{metric.label}</span>
+              </div>
+            ))}
+          </section>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {skills.map((skill) => (
+          <section className="section-block">
+            <header className="section-heading">
+              <span>01</span>
+              <h2>关于我</h2>
+            </header>
+
+            <div className="about-grid">
+              <div className="copy-stack">
+                <p>
+                  我是一名充满热情的前端工程师，相信代码可以成为艺术。
+                  专注于使用现代技术栈（React、TypeScript、Next.js）开发高性能、可维护的网络应用。
+                </p>
+                <p>
+                  在工作之外，我喜欢探索设计美学、分享技术见解、参与开源项目。
+                  如果你有想法或合作机会，欢迎随时交流。
+                </p>
+              </div>
+
+              <div className="mission-panel">
+                {focusAreas.map((item, index) => (
+                  <div className="mission-item" key={item}>
+                    <span>{String(index + 1).padStart(2, '0')}</span>
+                    <strong>{item}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="section-block">
+            <header className="section-heading">
+              <span>02</span>
+              <h2>技能矩阵</h2>
+            </header>
+
+            <div className="skill-grid">
+              {skills.map((skill, index) => (
                 <div
                   key={skill}
-                  className="px-4 py-3 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 text-center"
+                  className="skill-tile"
                 >
-                  {skill}
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <strong>{skill}</strong>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* Experience Section */}
-          <section className="space-y-6">
-            <div className="flex items-center gap-3">
-              <h2 className="text-3xl font-light text-gray-900 dark:text-gray-100">经历</h2>
-              <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent dark:from-gray-700"></div>
-            </div>
+          <section className="section-block">
+            <header className="section-heading">
+              <span>03</span>
+              <h2>经历轨道</h2>
+            </header>
 
-            <div className="space-y-8">
+            <div className="timeline">
               {experience.map((exp, index) => (
-                <div key={index} className="pb-8 border-b border-gray-200 dark:border-gray-800 last:border-b-0 last:pb-0">
-                  <div className="space-y-2 mb-4">
-                    <h3 className="text-xl font-medium text-gray-900 dark:text-gray-100">
-                      {exp.position}
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {exp.company} · {exp.period}
-                    </p>
+                <div key={index} className="timeline-item">
+                  <div className="timeline-node" aria-hidden="true"></div>
+                  <div className="timeline-content">
+                    <div className="timeline-meta">{exp.company} / {exp.period}</div>
+                    <h3>{exp.position}</h3>
+                    <p>{exp.description}</p>
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    {exp.description}
-                  </p>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* Contact Section */}
-          <section className="space-y-6 pt-8 border-t border-gray-200 dark:border-gray-800">
-            <div className="flex items-center gap-3">
-              <h2 className="text-3xl font-light text-gray-900 dark:text-gray-100">联系</h2>
-              <div className="flex-1 h-px bg-gradient-to-r from-gray-300 to-transparent dark:from-gray-700"></div>
-            </div>
+          <section className="section-block contact-section">
+            <header className="section-heading">
+              <span>04</span>
+              <h2>通讯链路</h2>
+            </header>
 
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="contact-grid">
               <a
                 href="mailto:shkmzzh@example.com"
-                className="group p-4 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                className="contact-tile"
               >
-                <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">
-                  邮箱
-                </p>
-                <p className="text-gray-900 dark:text-gray-100 font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                  shkmzzh@example.com
-                </p>
+                <span>MAIL</span>
+                <strong>shkmzzh@example.com</strong>
               </a>
 
               <a
                 href="https://github.com/shkmzzh"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-4 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                className="contact-tile"
               >
-                <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">
-                  GitHub
-                </p>
-                <p className="text-gray-900 dark:text-gray-100 font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                  github.com/shkmzzh
-                </p>
+                <span>GITHUB</span>
+                <strong>github.com/shkmzzh</strong>
               </a>
             </div>
           </section>

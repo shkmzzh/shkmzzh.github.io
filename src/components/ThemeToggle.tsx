@@ -63,8 +63,14 @@ export default function ThemeToggle() {
   if (!isMounted) return null; // SSR 阶段避免渲染
 
   return (
-    <div onClick={toggleTheme} className='p-1 bg-color ml-3'>
+    <button
+      type="button"
+      onClick={toggleTheme}
+      className="theme-toggle"
+      aria-label={theme === 'dark' ? '切换到浅色模式' : '切换到深色模式'}
+      title={theme === 'dark' ? '切换到浅色模式' : '切换到深色模式'}
+    >
       {theme === 'dark' ? <DarkIcon /> : <LightIcon />}
-    </div>
+    </button>
   );
 }

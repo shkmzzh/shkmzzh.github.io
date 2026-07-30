@@ -1,115 +1,91 @@
-/* 定义默认（浅色）主题变量 - 高级艺术风格 */
 :root {
-  --expo-in: linear(
-    0 0%,
-    0.0085 31.26%,
-    0.0167 40.94%,
-    0.0289 48.86%,
-    0.0471 55.92%,
-    0.0717 61.99%,
-    0.1038 67.32%,
-    0.1443 72.07%,
-    0.1989 76.7%,
-    0.2659 80.89%,
-    0.3465 84.71%,
-    0.4419 88.22%,
-    0.554 91.48%,
-    0.6835 94.51%,
-    0.8316 97.34%,
-    1 100%
-  );
-  --expo-out: linear(
-    0 0%,
-    0.1684 2.66%,
-    0.3165 5.49%,
-    0.446 8.52%,
-    0.5581 11.78%,
-    0.6535 15.29%,
-    0.7341 19.11%,
-    0.8011 23.3%,
-    0.8557 27.93%,
-    0.8962 32.68%,
-    0.9283 38.01%,
-    0.9529 44.08%,
-    0.9711 51.14%,
-    0.9833 59.06%,
-    0.9915 68.74%,
-    1 100%
-  );
+  --expo-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --shadow-panel: 0 24px 90px rgba(2, 8, 14, 0.2);
 }
 
-/* 深色主题 - 优雅深邃 */
 .dark {
-  --bg-color: #090d16;
-  --text-color: #f1f5f9;
-  --accent-color: #818cf8;
-  --accent-light: rgba(129, 140, 248, 0.12);
+  --bg-color: #05070a;
+  --bg-elevated: rgba(8, 17, 23, 0.82);
+  --bg-soft: rgba(14, 28, 33, 0.58);
+  --panel-color: rgba(7, 15, 20, 0.78);
+  --panel-strong: rgba(10, 25, 30, 0.92);
+  --text-color: #edfaff;
+  --text-muted: #98aeb7;
+  --text-faint: #637882;
+  --line-color: rgba(82, 237, 255, 0.22);
+  --line-strong: rgba(82, 237, 255, 0.45);
+  --accent-color: #28e6ff;
+  --accent-2: #8cff66;
+  --accent-3: #ff4d9d;
+  --accent-warm: #ffb547;
+  --grid-color: rgba(82, 237, 255, 0.11);
+  --scanline-color: rgba(237, 250, 255, 0.035);
+  color-scheme: dark;
 }
 
-/* 浅色主题 - 现代极简 */
 .light {
-  --bg-color: #f8fafc;
-  --text-color: #0f172a;
-  --accent-color: #4f46e5;
-  --accent-light: rgba(79, 70, 229, 0.08);
+  --bg-color: #eef5f8;
+  --bg-elevated: rgba(255, 255, 255, 0.78);
+  --bg-soft: rgba(222, 241, 246, 0.68);
+  --panel-color: rgba(255, 255, 255, 0.82);
+  --panel-strong: rgba(247, 253, 255, 0.95);
+  --text-color: #07121a;
+  --text-muted: #4d6671;
+  --text-faint: #78909a;
+  --line-color: rgba(0, 123, 145, 0.2);
+  --line-strong: rgba(0, 150, 176, 0.42);
+  --accent-color: #008fb0;
+  --accent-2: #3a9f4e;
+  --accent-3: #d9357f;
+  --accent-warm: #b97800;
+  --grid-color: rgba(0, 117, 145, 0.13);
+  --scanline-color: rgba(7, 18, 26, 0.04);
+  color-scheme: light;
 }
 
-/* 默认主题样式 */
 html {
   margin: 0;
   padding: 0;
+  background: var(--bg-color);
+}
+
+.bg-color {
   background-color: var(--bg-color);
 }
 
-html.dark {
-  background-color: var(--bg-color);
-}
-
-.dark {
-  .bg-color {
-    background-color: var(--bg-color);
-  }
-  .text-color{
-    color: var(--text-color);
-  }
-}
-
-.light {
-  .bg-color {
-    background-color: var(--bg-color);
-  }
-  .text-color{
-    color: var(--text-color);
-  }
+.text-color {
+  color: var(--text-color);
 }
 
 ::view-transition-group(root) {
-  animation-timing-function: var(--expo-in);
+  animation-timing-function: var(--expo-out);
 }
 
 ::view-transition-new(root) {
-  mask: url('https://media.tenor.com/Jz0aSpk9VIQAAAAi/i-love-you-love.gif')
-    center / 0 no-repeat;
-  animation: scale 1.5s;
-  z-index: 99999999;
+  animation: theme-reveal 0.55s var(--expo-out);
 }
 
-::view-transition-old(root),
-.dark::view-transition-old(root) {
-  animation: scale 1.5s;
+::view-transition-old(root) {
+  animation: theme-fade 0.55s var(--expo-in);
 }
 
-@keyframes scale {
-  0% {
-    mask-size: 0;
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0 at calc(100% - 56px) 42px);
   }
-  10% {
-    mask-size: 50vmax;
+  to {
+    clip-path: circle(160% at calc(100% - 56px) 42px);
   }
-  90% {
-    mask-size: 50vmax;
+}
+
+@keyframes theme-fade {
+  from {
+    opacity: 1;
   }
-  100% {
-    mask-size: 2000vmax;
+  to {
+    opacity: 0.72;
   }
 }
