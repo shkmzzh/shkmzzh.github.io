@@ -7,41 +7,41 @@
 }
 
 .dark {
-  --bg-color: #05070a;
-  --bg-elevated: rgba(8, 17, 23, 0.82);
-  --bg-soft: rgba(14, 28, 33, 0.58);
-  --panel-color: rgba(7, 15, 20, 0.78);
-  --panel-strong: rgba(10, 25, 30, 0.92);
-  --text-color: #edfaff;
-  --text-muted: #98aeb7;
-  --text-faint: #637882;
-  --line-color: rgba(82, 237, 255, 0.22);
-  --line-strong: rgba(82, 237, 255, 0.45);
-  --accent-color: #28e6ff;
-  --accent-2: #8cff66;
-  --accent-3: #ff4d9d;
-  --accent-warm: #ffb547;
-  --grid-color: rgba(82, 237, 255, 0.11);
-  --scanline-color: rgba(237, 250, 255, 0.035);
+  --bg-color: #050a07;
+  --bg-elevated: rgba(8, 29, 15, 0.84);
+  --bg-soft: rgba(15, 48, 24, 0.64);
+  --panel-color: rgba(5, 19, 10, 0.82);
+  --panel-strong: rgba(8, 29, 15, 0.94);
+  --text-color: #f2ffe9;
+  --text-muted: #b6d0a6;
+  --text-faint: #7f9671;
+  --line-color: rgba(147, 255, 72, 0.27);
+  --line-strong: rgba(178, 255, 64, 0.56);
+  --accent-color: #8dff32;
+  --accent-2: #d8ff45;
+  --accent-3: #42f5a1;
+  --accent-warm: #f5d94a;
+  --grid-color: rgba(147, 255, 72, 0.13);
+  --scanline-color: rgba(241, 255, 225, 0.04);
   color-scheme: dark;
 }
 
 .light {
-  --bg-color: #eef5f8;
-  --bg-elevated: rgba(255, 255, 255, 0.78);
-  --bg-soft: rgba(222, 241, 246, 0.68);
-  --panel-color: rgba(255, 255, 255, 0.82);
-  --panel-strong: rgba(247, 253, 255, 0.95);
-  --text-color: #07121a;
-  --text-muted: #4d6671;
-  --text-faint: #78909a;
-  --line-color: rgba(0, 123, 145, 0.2);
-  --line-strong: rgba(0, 150, 176, 0.42);
-  --accent-color: #008fb0;
-  --accent-2: #3a9f4e;
-  --accent-3: #d9357f;
-  --accent-warm: #b97800;
-  --grid-color: rgba(0, 117, 145, 0.13);
+  --bg-color: #f2fae8;
+  --bg-elevated: rgba(252, 255, 239, 0.82);
+  --bg-soft: rgba(226, 248, 205, 0.72);
+  --panel-color: rgba(252, 255, 240, 0.86);
+  --panel-strong: rgba(248, 255, 231, 0.96);
+  --text-color: #07170c;
+  --text-muted: #4f6a43;
+  --text-faint: #748867;
+  --line-color: rgba(72, 171, 36, 0.23);
+  --line-strong: rgba(77, 190, 39, 0.46);
+  --accent-color: #2c9f18;
+  --accent-2: #a8cd00;
+  --accent-3: #07995b;
+  --accent-warm: #a77c00;
+  --grid-color: rgba(72, 171, 36, 0.13);
   --scanline-color: rgba(7, 18, 26, 0.04);
   color-scheme: light;
 }

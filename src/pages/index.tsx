@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '@/components/Layout';
 import { ReactElement } from 'react';
 import Card from '@/components/Card';
+import PortalCanvas from '@/components/PortalCanvas';
 
 export default function Home() {
   const skills = [
@@ -38,6 +39,24 @@ export default function Home() {
     '产品设计',
   ];
 
+  const characterShots = [
+    {
+      title: 'Portal Run',
+      caption: '跨维度传送门启动，能量流被重新调校成蓝色实验室频段。',
+      image: 'https://assets-cache0.moviebreak.de/system/bilder/story/photo/63e3f25d6e733314b6890000/3jTgoDLnaXfSjr5jCeOgSevFoqH.jpg',
+    },
+    {
+      title: 'Dimension Signal',
+      caption: '瑞克和莫蒂式冒险信号，带一点荒诞、一点高能。',
+      image: 'https://estaticos.elcolombiano.com/binrepository/604x770/0c167/780d565/none/11101/HWSH/rym_45546321_20240709203744.jpg',
+    },
+    {
+      title: 'Morty Alert',
+      caption: '实验室警报已经响起，下一秒可能就要掉进别的宇宙。',
+      image: 'https://www.tvguide.com/a/img/hub/2013/12/11/96f8ec1f-afc9-40e0-9202-b5c1a08f1329/dtaXBmaTqDEjJxb_1oUo7_W8mIQUl2gH.jpg',
+    },
+  ];
+
   return (
     <main className="home-page">
       <Card>
@@ -46,22 +65,22 @@ export default function Home() {
             <div className="hero-copy">
               <div className="status-row">
                 <span className="status-dot" aria-hidden="true"></span>
-                <span>ONLINE / FRONTEND INTERFACE ENGINEER</span>
+                <span>DIMENSION C-137 / FRONTEND LAB ONLINE</span>
               </div>
 
               <div className="hero-title-group">
-                <p className="hero-kicker">Personal Command Center</p>
+                <p className="hero-kicker">Interdimensional Tech Portfolio</p>
                 <h1 className="hero-title">
                   萧家萧飞
                 </h1>
                 <p className="hero-subtitle">
-                  前端开发工程师 / 创意编程者
+                  前端开发工程师 / 跨维度界面实验员
                 </p>
               </div>
 
               <p className="hero-description">
-                热爱前端开发与产品设计。专注于用代码创造优雅的用户界面和沉浸式体验，
-                在复杂系统里寻找清晰、速度与一点点未来感。
+                把个人主页改造成一间漂浮在多元宇宙里的前端实验室：
+                绿色传送门、故障网格、疯狂科学仪表和可交互界面一起运行。
               </p>
 
               <div className="hero-actions" aria-label="联系方式">
@@ -82,22 +101,31 @@ export default function Home() {
             <div className="holo-dashboard" aria-hidden="true">
               <div className="holo-dashboard__frame">
                 <div className="holo-dashboard__scan"></div>
-                <div className="holo-ring">
-                  <div className="holo-ring__orbit holo-ring__orbit--outer"></div>
-                  <div className="holo-ring__orbit holo-ring__orbit--middle"></div>
-                  <div className="holo-ring__core">
-                    <span>SX</span>
-                  </div>
-                </div>
-                <div className="holo-readout holo-readout--top">
-                  <span>UI CORE</span>
-                  <strong>98.7%</strong>
-                </div>
-                <div className="holo-readout holo-readout--bottom">
-                  <span>LATENCY</span>
-                  <strong>LOW</strong>
+                <div className="portal-stage">
+                  <PortalCanvas />
                 </div>
               </div>
+            </div>
+          </section>
+
+          <section className="section-block dimension-gallery">
+            <header className="section-heading">
+              <span>00</span>
+              <h2>跨维度影像档案</h2>
+            </header>
+
+            <div className="character-grid">
+              {characterShots.map((shot) => (
+                <figure className="character-card" key={shot.title}>
+                  <div className="character-image">
+                    <img src={shot.image} alt={shot.title} loading="lazy" referrerPolicy="no-referrer" />
+                  </div>
+                  <figcaption>
+                    <span>{shot.title}</span>
+                    <p>{shot.caption}</p>
+                  </figcaption>
+                </figure>
+              ))}
             </div>
           </section>
 
